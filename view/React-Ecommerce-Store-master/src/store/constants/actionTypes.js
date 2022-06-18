@@ -1,0 +1,6 @@
+export const productActionType = {
+    CREATE: 'PRODUCT_CREATE',
+    UPDATE: 'PRODUCT_UPDATE',
+    DELETE: 'PRODUCT_DELETE',
+    CREATE_LIST: 'PRODUCT_CREATE_LIST'
+}

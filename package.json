@@ -1,0 +1,29 @@
+{
+  "name": "node_with_express",
+  "version": "1.0.0",
+  "description": "node with express project",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node app.js"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.30.0",
+    "cors": "^2.8.5",
+    "datauri": "^4.1.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.2.9",
+    "multer": "^1.4.4"
+  }
+}
