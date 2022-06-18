@@ -2,12 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import router from './routes/routes';
-// import dotenv from 'dotenv';
-// import cloudnary from 'cloudinary';
-// import cloudinaryConfig from './config/cloudinary';
-// dotenv.config();
-// const cloudinary = cloudnary.v2;
-// cloudinary.config(cloudinaryConfig);
 const app = express();
 
 const Password = "admin";
