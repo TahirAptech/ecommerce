@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const state = useSelector((state) => state.handleCart)
+  const state = useSelector((state) => state.handleCart);
+  const location = useLocation();
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
@@ -25,22 +26,22 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/products">
+                <Link className={`nav-link ${location.pathname === "/products" ? "active" : ""}`} to="/products">
                   Products
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">
+                <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">
                   About
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact">
+                <Link className={`nav-link ${location.pathname === "/contact" ? "active" : ""}`} to="/contact">
                   Contact
                 </Link>
               </li>

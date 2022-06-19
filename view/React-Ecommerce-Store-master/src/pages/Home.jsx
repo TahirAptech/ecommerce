@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import {PersonContext} from "../context/noteContext";
 import Products from "./Products";
 
 const Home = () => {
+  const {state} = useContext(PersonContext);
   return (
     <>
       <div className="hero">
@@ -10,7 +13,7 @@ const Home = () => {
             <div className="container">
               <h5 className="card-title display-3 fw-bolder mb-0">NEW SEASON ARRIVALS</h5>
               <p className="card-text lead fs-2">
-                CHECK OUT ALL THE TRENDS
+                CHECK OUT ALL THE TRENDS {state}
               </p>
             </div>
           </div>

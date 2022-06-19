@@ -11,8 +11,11 @@ const Products = () => {
 
   useEffect(() => {
     if (store.productData.length > 0) {
-      setFilter(store.productData)
+      setFilter(store.productData);
+      console.log("Product length:", store.productData.length);
+
     }
+    console.log("Product useEffect Call first", store.productData.length);
   }, [store.productData]);
 
   const filterProduct = (cat) => {
@@ -40,24 +43,7 @@ const Products = () => {
   };
 
   const ShowProducts = () => {
-    let cardFun = (product, ind) => {
-      return (
-        <div key={ind} className="col-xl-3 col-lg-4 col-md-6 mb-4">
-          <div class="card h-100 text-center p-4" key={product._id}>
-            <img src={product.image.path} class="card-img-top" alt={product.title} height="250px" />
-            <div class="card-body">
-              <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
-              <p class="card-text lead fw-bold">
-                ${product.price}
-              </p>
-              <Link to={`/products/${product._id}`} class="btn btn-outline-dark">
-                Buy Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      );
-    }
+    //let cardFun = 
     return (
       <>
         <div className="buttons d-flex justify-content-center mb-5 pb-5">
@@ -69,7 +55,26 @@ const Products = () => {
           <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelery</button>
           <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
         </div>
-        {filter.map(cardFun)}
+        {
+          filter.map((product, ind) => {
+            return (
+              <div key={ind} className="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 text-center p-4" key={product._id}>
+                  <img src={product.image.path} class="card-img-top" alt={product.title} height="250px" />
+                  <div class="card-body">
+                    <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
+                    <p class="card-text lead fw-bold">
+                      ${product.price}
+                    </p>
+                    <Link to={`/products/${product._id}`} class="btn btn-outline-dark">
+                      Buy Now
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
       </>
     );
   };
