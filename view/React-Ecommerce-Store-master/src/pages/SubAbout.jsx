@@ -5,11 +5,11 @@ import SubAboutDetail from './SubAboutDetail';
 
 const SubAbout = () => {
   
-  const { state } = useContext(PersonContext);
+  const { counterState } = useContext(PersonContext);
 
   return (
     <div>
-      <h2>SubAbout Component {state}</h2>
+      <h2>SubAbout Component {counterState}</h2>
       <SubAboutDetail />
     </div>
   )

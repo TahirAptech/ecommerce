@@ -41,22 +41,24 @@ const ProductAddEdit = () => {
                     <tbody>
                         {
                             productData.map((p, i) => {
-                                return (<tr key={i}>
-                                    <td>{p.title}</td>
-                                    <td><img src={p?.image?.path} width="100" /></td>
-                                    <td>{p.price}</td>
-                                    <td>{p.category}</td>
-                                    <td>{p.description}</td>
-                                    <td>{p.rating}</td>
-                                    <td>
-                                        <div style={{ display: "flex" }}>
-                                            <Button variant="primary" className="m-1" onClick={() => setModalShow({ isShow: true, objForUpdate: p, isUpdate: true })}> Edit </Button>
-                                            {
-                                                showLoader ? <Loader /> : <Button variant="danger" className="m-1" onClick={() => deleteThisProduct(p._id)}> Delete </Button>
-                                            }
-                                        </div>
-                                    </td>
-                                </tr>)
+                                return (
+                                    <tr key={i}>
+                                        <td>{p.title}</td>
+                                        <td><img src={p?.image?.path} width="100" /></td>
+                                        <td>{p.price}</td>
+                                        <td>{p.category}</td>
+                                        <td>{p.description}</td>
+                                        <td>{p.rating}</td>
+                                        <td>
+                                            <div style={{ display: "flex" }}>
+                                                <Button variant="primary" className="m-1" onClick={() => setModalShow({ isShow: true, objForUpdate: p, isUpdate: true })}> Edit </Button>
+                                                {
+                                                    showLoader ? <Loader /> : <Button variant="danger" className="m-1" onClick={() => deleteThisProduct(p._id)}> Delete </Button>
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
                             })
                         }
                     </tbody>

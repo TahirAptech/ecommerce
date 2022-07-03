@@ -60,7 +60,7 @@ const Products = () => {
             return (
               <div key={ind} className="col-xl-3 col-lg-4 col-md-6 mb-4">
                 <div class="card h-100 text-center p-4" key={product._id}>
-                  <img src={product.image.path} class="card-img-top" alt={product.title} height="250px" />
+                  <img src={product?.image?.path} class="card-img-top" alt={product.title} height="250px" />
                   <div class="card-body">
                     <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
                     <p class="card-text lead fw-bold">

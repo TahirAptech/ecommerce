@@ -12,7 +12,7 @@ const handleCart = (state = cart, action) => {
                     x._id === product._id ? { ...x, qty: x.qty + 1 } : x
                 );
             } else {
-                const product = action.payload;
+              //  const product = action.payload;
                 return [...state, { ...product, qty: 1, }]
             }
         case "DELITEM":

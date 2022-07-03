@@ -13,9 +13,11 @@ const MyModal = ({ show, onHide }) => {
 
     const addProduct = (e) => {
         e.preventDefault();
-        console.log(product.file);
+        debugger
+        console.log(product);
         let formData = new FormData();
         formData.append('picture', product.file);
+        // formData.append('data', product);
         formData.append('data', JSON.stringify(product));
         let msg = "";
         if (show.isUpdate) {

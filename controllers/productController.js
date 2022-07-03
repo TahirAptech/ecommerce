@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import cloudinary from '../config/cloudinary';
 import Product from '../models/product';
 
@@ -26,19 +25,26 @@ export const createProduct = async (req, res) => {
         // const newProduct = new Product(req.body);
         // const aa = await newProduct.save();
         const data = JSON.parse(req.body.data);
-        const path = req.files[0].path;
-
-        const { secure_url, public_id } = await cloudinary.uploader.upload(path);
-        const obj = {
-            ...data,
-            image: {
-                path: secure_url,
-                cloudinaryId: public_id
+        // const data = req.body.data;
+       
+        console.log(req);
+        console.log(req.files);
+        if (req.files.length > 0) {
+            const { secure_url, public_id } = await cloudinary.uploader.upload(req.files[0].path);
+            const obj = {
+                ...data,
+                image: {
+                    path: secure_url,
+                    cloudinaryId: public_id
+                }
             }
+            const productCreated = await Product.create(obj);
+            res.status(201).json(productCreated);
         }
-
-        const productCreated = await Product.create(obj);
-        res.status(201).json(productCreated);
+        else {
+            const productCreated = await Product.create(data);
+            res.status(201).json(productCreated);
+        }
     } catch (error) {
         console.log(error);
         res.json({ message: error });
@@ -52,7 +58,8 @@ export const updateProduct = async (req, res) => {
         // if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No product with id: ${id}`);
         const product = await Product.findById(id);
         if (product) {
-            if (req.body.picture !== 'undefined') {
+            console.log(req.files.length);
+            if (req.files.length > 0) {
                 await cloudinary.uploader.destroy(product.image.cloudinaryId); // delete previous
                 const { secure_url, public_id } = await cloudinary.uploader.upload(req.files[0].path); // add new image
 
